@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Phone, ChevronDown, ArrowRight, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -9,6 +10,7 @@ import { SITE, PROJECT_TYPES } from "@/lib/site";
 import { categoryIcon, sectorIcon } from "@/lib/icons";
 import { trackEvent } from "@/lib/analytics";
 import { clsx } from "@/lib/clsx";
+import { asset } from "@/lib/asset";
 import type { Categoria } from "@/types";
 
 const DIRECT_LINKS = [
@@ -43,9 +45,15 @@ export function Header({ categorias }: { categorias: Categoria[] }) {
       onMouseLeave={scheduleClose}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-baseline gap-2" onClick={() => setOpen(false)}>
-          <span className="font-display text-2xl leading-none tracking-tight">World Fitness Club</span>
-          <span className="hidden h-2 w-2 rounded-full bg-energy sm:block" />
+        <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <Image
+            src={asset("/Logo_Recortado-removebg-preview.png")}
+            alt="World Fitness Club"
+            width={160}
+            height={52}
+            priority
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

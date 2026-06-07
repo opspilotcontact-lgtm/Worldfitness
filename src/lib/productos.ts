@@ -5,8 +5,8 @@ import { asset } from "@/lib/asset";
 
 const PRODUCTOS = (rawData as Producto[]).map((p) => ({
   ...p,
-  imagen_local: asset(p.imagen_local),
-  imagen_cutout: asset(p.imagen_cutout),
+  imagen_local: asset(p.imagen_local) ?? null,
+  imagen_cutout: asset(p.imagen_cutout) ?? null,
 }));
 
 export function getAllProductos(): Producto[] {

@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ReviewsBadge } from "@/components/conversion/ReviewsBadge";
 import { SITE } from "@/lib/site";
 import { PROJECT_TYPES } from "@/lib/site";
 import { getCategorias } from "@/lib/productos";
+import { asset } from "@/lib/asset";
 
 export function Footer() {
   const cats = getCategorias().slice(0, 6);
@@ -12,7 +14,15 @@ export function Footer() {
     <footer className="border-t border-line-dark bg-carbon text-bone">
       <Container className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <span className="font-display text-2xl">World Fitness Club</span>
+          <Link href="/">
+            <Image
+              src={asset("/Logo_Recortado-removebg-preview.png")}
+              alt="World Fitness Club"
+              width={160}
+              height={52}
+              className="h-10 w-auto object-contain brightness-0 invert"
+            />
+          </Link>
           <p className="mt-3 max-w-xs text-sm text-bone/60">
             Maquinaria profesional de gimnasio con showroom físico de{" "}
             {SITE.showroomM2} m² en {SITE.address.city}. {SITE.yearsActive} años

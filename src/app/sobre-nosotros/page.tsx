@@ -131,7 +131,7 @@ export default function SobreNosotrosPage() {
             {/* Marca */}
             <div className="flex items-center gap-4 hairline rounded-[var(--radius-card)] bg-bone-dim/50 p-5">
               <Image
-                src={asset("/empresa/logo-wfc.png")}
+                src={asset("/Logo_Recortado-removebg-preview.png")}
                 alt="Logo de World Fitness Club"
                 width={64}
                 height={64}
