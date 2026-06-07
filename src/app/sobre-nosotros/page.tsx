@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MapPin, Mail, Phone, Award } from "lucide-react";
+import { asset } from "@/lib/asset";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -65,7 +66,7 @@ export default function SobreNosotrosPage() {
       <Container className="pt-10">
         <figure className="relative overflow-hidden rounded-[var(--radius-card)] border border-carbon">
           <Image
-            src="/empresa/showroom-1.jpg"
+            src={asset("/empresa/showroom-1.jpg")}
             alt="Maquinaria profesional de gimnasio de World Fitness Club"
             width={1199}
             height={799}
@@ -130,7 +131,7 @@ export default function SobreNosotrosPage() {
             {/* Marca */}
             <div className="flex items-center gap-4 hairline rounded-[var(--radius-card)] bg-bone-dim/50 p-5">
               <Image
-                src="/empresa/logo-wfc.png"
+                src={asset("/empresa/logo-wfc.png")}
                 alt="Logo de World Fitness Club"
                 width={64}
                 height={64}
@@ -145,7 +146,7 @@ export default function SobreNosotrosPage() {
             {/* Foto de ambiente */}
             <figure className="overflow-hidden rounded-[var(--radius-card)] border border-line">
               <Image
-                src="/empresa/showroom-2.jpg"
+                src={asset("/empresa/showroom-2.jpg")}
                 alt="Zona de entrenamiento equipada por World Fitness Club"
                 width={1700}
                 height={700}

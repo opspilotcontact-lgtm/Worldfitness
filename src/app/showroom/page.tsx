@@ -33,11 +33,13 @@ const GALLERY = [
   { label: "Vista del showroom", file: "vista-showroom.jpg" },
 ];
 
+import { asset } from "@/lib/asset";
+
 function galleryTiles() {
   return GALLERY.map((g) => ({
     ...g,
     src: fs.existsSync(path.join(process.cwd(), "public", "showroom", g.file))
-      ? `/showroom/${g.file}`
+      ? asset(`/showroom/${g.file}`)
       : null,
   }));
 }

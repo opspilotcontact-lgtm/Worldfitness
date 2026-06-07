@@ -7,6 +7,9 @@ const repoName = process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITO
 const nextConfig: NextConfig = {
   output: "export",
   basePath: isGithubActions ? repoName : "",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGithubActions ? repoName : "",
+  },
   // Las imágenes de producto son locales (public/productos) y ya vienen
   // dimensionadas para web. Se sirven sin el proxy de optimización: en este
   // entorno el optimizador cae a WASM (45 s/imagen). En Vercel, donde el

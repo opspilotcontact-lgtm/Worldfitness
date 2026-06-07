@@ -1,8 +1,13 @@
 import rawData from "../../data/productos.json";
 import type { Categoria, CentroTipo, Producto } from "@/types";
 import { FEATURED_CATEGORY_HERO } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
-const PRODUCTOS = rawData as Producto[];
+const PRODUCTOS = (rawData as Producto[]).map((p) => ({
+  ...p,
+  imagen_local: asset(p.imagen_local),
+  imagen_cutout: asset(p.imagen_cutout),
+}));
 
 export function getAllProductos(): Producto[] {
   return PRODUCTOS;
