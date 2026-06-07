@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+/* ============================================================
+   World Fitness Club Pro — Sistema de diseño
+   Dirección: industrial-editorial. Carbón + hueso + naranja energía.
+   Mono para datos técnicos (specs de ficha de ingeniería). Hairlines.
+   Nada de gradientes decorativos ni sombras blandas genéricas.
+   ============================================================ */
+
+@theme {
+  /* Marca */
+  --color-carbon: #0a0a0a;
+  --color-carbon-soft: #161614;
+  --color-bone: #f8f5ef;
+  --color-bone-dim: #efe9dd;
+  --color-energy: #ff5722;
+  --color-energy-deep: #e23e10;
+  --color-pro: #1a3a26;
+  --color-pro-light: #25543a;
+
+  /* Neutros */
+  --color-ink-900: #1a1a1a;
+  --color-ink-600: #4a4a4a;
+  --color-ink-400: #8a8a8a;
+  --color-line: #d8d2c4;
+  --color-line-dark: #2a2a28;
+
+  /* Tipografías (cargadas vía next/font en layout) */
+  --font-display: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jbmono), "Courier New", monospace;
+
+  /* Ritmo */
+  --radius-card: 2px;
+}
+
+:root {
+  --background: var(--color-bone);
+  --foreground: var(--color-carbon);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-bone);
+  color: var(--color-carbon);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Grano fino: textura analógica sutil sobre el hueso */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--color-energy);
+  color: var(--color-bone);
+}
+
+/* ---- Tipografía display: condensada, industrial ---- */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+/* Eyebrow / label técnico tipo etiqueta de máquina */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Línea de specs (peso, dimensiones, SKU) */
+.spec-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Componentes utilitarios ---- */
+.hairline {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-line);
+}
+
+.btn-energy {
+  background: var(--color-energy);
+  color: var(--color-bone);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn-energy:hover {
+  background: var(--color-energy-deep);
+  transform: translateY(-1px);
+}
+.btn-energy:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  border: 1.5px solid var(--color-carbon);
+  color: var(--color-carbon);
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn-outline:hover {
+  background: var(--color-carbon);
+  color: var(--color-bone);
+}
+
+/* Campos de formulario */
+.field {
+  width: 100%;
+  background: var(--color-bone);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  padding: 0.75rem 0.9rem;
+  font-size: 0.95rem;
+  color: var(--color-carbon);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field::placeholder {
+  color: var(--color-ink-400);
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-energy);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-energy) 18%, transparent);
+}
+
+/* Marquesina / cinta diagonal de acento */
+.tape {
+  background: var(--color-energy);
+  color: var(--color-bone);
+}
+
+/* Rejilla de fondo tipo plano técnico */
+.blueprint {
+  background-image:
+    linear-gradient(var(--color-line-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line-dark) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center;
+}
+
+/* Máquina "sin fondo": el blanco del estudio se funde con el hueso de la página.
+   Las fotos de producto son JPG con fondo blanco; multiply lo elimina visualmente
+   y deja la máquina flotando sobre el fondo, al estilo de las webs de fabricante. */
+.blend-product {
+  mix-blend-mode: multiply;
+}
+
+/* Palabra/numeral gigante fantasma detrás del contenido (acento editorial). */
+.ghost-word {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Reveal escalonado en carga */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Tipografía de contenido (blog, descripciones largas) */
+.prose-wfc {
+  max-width: 68ch;
+  line-height: 1.72;
+}
+.prose-wfc h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 2.4rem 0 1rem;
+}
+.prose-wfc h3 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 1.8rem 0 0.6rem;
+}
+.prose-wfc p {
+  margin: 0 0 1.1rem;
+  color: var(--color-ink-900);
+}
+.prose-wfc ul {
+  margin: 0 0 1.3rem;
+  padding-left: 1.1rem;
+  list-style: none;
+}
+.prose-wfc li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-ink-900);
+}
+.prose-wfc li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-energy);
+  font-weight: 700;
+}
+.prose-wfc a {
+  color: var(--color-energy-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
