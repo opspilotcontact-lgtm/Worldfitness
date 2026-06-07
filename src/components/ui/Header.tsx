@@ -45,15 +45,16 @@ export function Header({ categorias }: { categorias: Categoria[] }) {
       onMouseLeave={scheduleClose}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center" onClick={() => setOpen(false)}>
+        <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <Image
             src={asset("/Logo_Recortado-removebg-preview.png")}
             alt="World Fitness Club"
             width={160}
             height={52}
             priority
-            className="h-10 w-auto object-contain"
+            className="h-9 w-auto object-contain"
           />
+          <span className="font-display text-xl leading-none tracking-tight text-carbon">World Fitness Club</span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

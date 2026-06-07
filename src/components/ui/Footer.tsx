@@ -14,14 +14,15 @@ export function Footer() {
     <footer className="border-t border-line-dark bg-carbon text-bone">
       <Container className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <Link href="/">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src={asset("/Logo_Recortado-removebg-preview.png")}
               alt="World Fitness Club"
               width={160}
               height={52}
-              className="h-10 w-auto object-contain brightness-0 invert"
+              className="h-9 w-auto object-contain brightness-0 invert"
             />
+            <span className="font-display text-xl text-bone">World Fitness Club</span>
           </Link>
           <p className="mt-3 max-w-xs text-sm text-bone/60">
             Maquinaria profesional de gimnasio con showroom físico de{" "}
