@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Button } from "@/components/ui/Button";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { PresupuestoFormShort } from "@/components/conversion/PresupuestoFormShort";
+import { AddToCart } from "@/components/cart/AddToCart";
 import { ShowroomCTA } from "@/components/conversion/ShowroomCTA";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 import { getAllProductos, getProducto, getSimilares } from "@/lib/productos";
@@ -119,6 +120,24 @@ export default async function ProductoPage({
           </div>
 
           <p className="mt-5 text-lg text-ink-900">{p.descripcion_corta}</p>
+
+          {/* Añadir al carrito con cantidad */}
+          <div className="mt-6">
+            <AddToCart
+              producto={{
+                slug: p.slug,
+                nombre: p.nombre,
+                precio: p.precio,
+                precio_formato: p.precio_formato,
+                imagen: p.imagen_cutout ?? p.imagen_local,
+              }}
+              variant="full"
+            />
+            <p className="mt-2 text-xs text-ink-400">
+              Añádela a tu solicitud y pídenos presupuesto por WhatsApp o email —sin
+              pasarela de pago, sin compromiso.
+            </p>
+          </div>
 
           {/* Bloque conversión */}
           <div className="mt-6 hairline rounded-[var(--radius-card)] bg-bone-dim/50 p-5">

@@ -13,7 +13,10 @@ type EventName =
   | "phone_click"
   | "showroom_visit_request"
   | "category_filter_used"
-  | "search_performed";
+  | "search_performed"
+  | "cart_add"
+  | "cart_request_whatsapp"
+  | "cart_request_email";
 
 declare global {
   interface Window {
@@ -32,6 +35,9 @@ export function trackEvent(name: EventName, params: Record<string, unknown> = {}
     showroom_visit_request: "Contact",
     whatsapp_click: "Contact",
     phone_click: "Contact",
+    cart_request_whatsapp: "Lead",
+    cart_request_email: "Lead",
+    cart_add: "AddToCart",
   };
   const fbEvent = fbMap[name];
   if (fbEvent) window.fbq?.("track", fbEvent, params);

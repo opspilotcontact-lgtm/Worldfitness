@@ -6,6 +6,8 @@ import { Footer } from "@/components/ui/Footer";
 import { WhatsAppFab } from "@/components/conversion/WhatsAppFab";
 import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
 import { Analytics } from "@/components/seo/Analytics";
+import { CartProvider } from "@/lib/cart";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import { localBusinessSchema } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import { getCategorias } from "@/lib/productos";
@@ -66,10 +68,13 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <SchemaMarkup schema={localBusinessSchema()} />
-        <Header categorias={categorias} />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppFab />
+        <CartProvider>
+          <Header categorias={categorias} />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <WhatsAppFab />
+          <CartDrawer />
+        </CartProvider>
         <Analytics />
       </body>
     </html>

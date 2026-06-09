@@ -11,6 +11,7 @@ import { categoryIcon, sectorIcon } from "@/lib/icons";
 import { trackEvent } from "@/lib/analytics";
 import { clsx } from "@/lib/clsx";
 import { asset } from "@/lib/asset";
+import { CartButton } from "@/components/cart/CartButton";
 import type { Categoria } from "@/types";
 
 const DIRECT_LINKS = [
@@ -72,20 +73,24 @@ export function Header({ categorias }: { categorias: Categoria[] }) {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
           <a
             href={`tel:${SITE.phoneRaw}`}
             onClick={() => trackEvent("phone_click", { source: "header" })}
-            className="spec-mono flex items-center gap-1.5 text-sm text-carbon hover:text-energy-deep"
+            className="spec-mono mr-1 flex items-center gap-1.5 text-sm text-carbon hover:text-energy-deep"
           >
             <Phone className="h-3.5 w-3.5" /> {SITE.phoneDisplay}
           </a>
+          <CartButton />
           <Button href="/presupuesto" variant="energy" size="sm">Pedir presupuesto</Button>
         </div>
 
-        <button className="lg:hidden" onClick={() => setOpen((v) => !v)} aria-label="Abrir menú">
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-1 lg:hidden">
+          <CartButton />
+          <button onClick={() => setOpen((v) => !v)} aria-label="Abrir menú">
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </Container>
 
       {/* Panel mega-menú (desktop) */}

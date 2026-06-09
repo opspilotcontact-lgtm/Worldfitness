@@ -116,7 +116,7 @@ export default function Home() {
             </Button>
           </div>
           <div className="mt-12">
-            <TestimonialsGrid limit={6} />
+            <TestimonialsGrid limit={3} />
           </div>
         </Container>
       </section>
